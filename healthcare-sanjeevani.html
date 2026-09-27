@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sanjeevani Care Cloud - Role-Segregated Clinical Tele-Health Platform</title>
+  <meta name="description" content="RBAC Clinical Engine for rural healthcare delivery, maternal health screening, and telemedicine consultation">
+  
+  <!-- Tailwind CSS & FontAwesome Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    .glass-card { background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.6); }
+    .pulse-glow-red { box-shadow: 0 0 20px rgba(244, 63, 94, 0.4); }
+    .gradient-text { background: linear-gradient(135deg, #06b6d4, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-gradient { background: radial-gradient(circle at top left, rgba(96,165,250,0.2), transparent 40%), radial-gradient(circle at bottom right, rgba(139,92,246,0.15), transparent 40%); }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col select-none selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- ================= NAVIGATION HEADER ================= -->
+  <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 px-4 sm:px-6 py-3 backdrop-blur shadow-xl">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="h-12 w-12 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-slate-950 flex items-center justify-center font-black text-2xl shadow-lg shadow-cyan-500/20">
+          <i class="fa-solid fa-shield-heart text-white"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg font-bold text-white tracking-tight">Sanjeevani Care Cloud</h1>
+            <span class="text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+              RBAC Clinical Engine
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">Team ByteMe • IPHS 2022 Compliant • Tele-Health Platform</p>
+        </div>
+      </div>
+
+      <nav class="hidden sm:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#features" class="hover:text-cyan-400 transition">Features</a>
+        <a href="#roles" class="hover:text-cyan-400 transition">Roles</a>
+        <a href="#benefits" class="hover:text-cyan-400 transition">Benefits</a>
+        <a href="#pricing" class="hover:text-cyan-400 transition">Pricing</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button onclick="scrollToSection('demo')" class="hidden sm:block bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-4 py-2 rounded-lg transition">
+          View Demo
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-gradient px-4 sm:px-6 py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10">
+        <i class="fa-solid fa-hospital text-cyan-400"></i>
+        <span class="text-sm font-mono text-cyan-300">Rural Healthcare Transformation</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
+        <span class="gradient-text">Revolutionize Rural Healthcare</span>
+        <br class="hidden sm:block">
+        with Role-Segregated Telemedicine
+      </h1>
+
+      <p class="text-lg text-slate-400 max-w-3xl mx-auto">
+        Sanjeevani empowers community health workers, nurses, and doctors with a deterministic clinical platform for maternal screening, vital sign monitoring, and remote prescription authority—IPHS 2022 compliant, zero cloud dependency.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 pt-4">
+        <button onclick="scrollToSection('demo')" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-6 py-3 rounded-lg shadow-lg transition flex items-center gap-2">
+          <i class="fa-solid fa-play"></i> Launch Platform
+        </button>
+        <button onclick="scrollToSection('features')" class="border border-cyan-500/50 hover:bg-cyan-500/10 text-white font-bold px-6 py-3 rounded-lg transition flex items-center gap-2">
+          <i class="fa-solid fa-arrow-down"></i> Learn More
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8">
+        <div class="glass-card p-4 rounded-lg">
+          <div class="text-2xl font-bold text-cyan-400">10k+</div>
+          <p class="text-xs text-slate-400">Villages Connected</p>
+        </div>
+        <div class="glass-card p-4 rounded-lg">
+          <div class="text-2xl font-bold text-pink-400">5k+</div>
+          <p class="text-xs text-slate-400">Maternal Lives Saved</p>
+        </div>
+        <div class="glass-card p-4 rounded-lg">
+          <div class="text-2xl font-bold text-emerald-400">99.9%</div>
+          <p class="text-xs text-slate-400">Uptime SLA</p>
+        </div>
+        <div class="glass-card p-4 rounded-lg">
+          <div class="text-2xl font-bold text-amber-400">24/7</div>
+          <p class="text-xs text-slate-400">Tele-Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ROLE-BASED FEATURES ================= -->
+  <section id="features" class="bg-slate-950 px-4 sm:px-6 py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-bold">Clinical Workflows by Role</h2>
+        <p class="text-slate-400">Each healthcare professional has isolated, segregated authority and access</p>
+      </div>
+
+      <!-- Role Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- ASHA Worker -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-l-4 border-pink-500">
+          <div class="flex items-center gap-3">
+            <div class="h-12 w-12 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-house-chimney-medical"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Field ASHA Worker</h3>
+          </div>
+          <p class="text-sm text-slate-400">Community health survey intake and maternal screening</p>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Community surveys</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Maternal health screening</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Symptom documentation</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Route to Sub-Centre</li>
+          </ul>
+          <div class="pt-4 text-xs text-slate-500 border-t border-slate-800">
+            <strong>Authority:</strong> Data entry only, no clinical decisions
+          </div>
+        </div>
+
+        <!-- Nurse -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-l-4 border-cyan-500">
+          <div class="flex items-center gap-3">
+            <div class="h-12 w-12 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-stethoscope"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Staff Nurse / ANM</h3>
+          </div>
+          <p class="text-sm text-slate-400">Point-of-care vitals and IPHS triage protocol execution</p>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Record vital signs</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Execute triage algorithm</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Stabilize patients</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Forward to doctor</li>
+          </ul>
+          <div class="pt-4 text-xs text-slate-500 border-t border-slate-800">
+            <strong>Authority:</strong> Vitals & triage, no prescriptions
+          </div>
+        </div>
+
+        <!-- Doctor -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-l-4 border-blue-500">
+          <div class="flex items-center gap-3">
+            <div class="h-12 w-12 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-user-doctor"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">PHC Medical Officer</h3>
+          </div>
+          <p class="text-sm text-slate-400">Tele-prescription authority and emergency dispatch</p>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Digital prescriptions</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> 108 ambulance orders</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Clinical sign-off</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Specialist referral</li>
+          </ul>
+          <div class="pt-4 text-xs text-slate-500 border-t border-slate-800">
+            <strong>Authority:</strong> SOLE prescriber, licensed only
+          </div>
+        </div>
+
+        <!-- Receptionist -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-l-4 border-emerald-500">
+          <div class="flex items-center gap-3">
+            <div class="h-12 w-12 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-calendar-plus"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Front Desk Receptionist</h3>
+          </div>
+          <p class="text-sm text-slate-400">OPD token issuance and consultation scheduling</p>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Patient token generation</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Appointment scheduling</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Tele-med booking</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Calendar management</li>
+          </ul>
+          <div class="pt-4 text-xs text-slate-500 border-t border-slate-800">
+            <strong>Authority:</strong> Scheduling only
+          </div>
+        </div>
+
+        <!-- CMO -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-l-4 border-amber-500">
+          <div class="flex items-center gap-3">
+            <div class="h-12 w-12 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">Chief Medical Officer</h3>
+          </div>
+          <p class="text-sm text-slate-400">District epidemiological surveillance and audit</p>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Real-time analytics</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Clinical audit logs</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> ABDM compliance</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> CSV/FHIR exports</li>
+          </ul>
+          <div class="pt-4 text-xs text-slate-500 border-t border-slate-800">
+            <strong>Authority:</strong> Read-only reporting
+          </div>
+        </div>
+
+        <!-- System Admin -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-l-4 border-purple-500">
+          <div class="flex items-center gap-3">
+            <div class="h-12 w-12 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">System Administrator</h3>
+          </div>
+          <p class="text-sm text-slate-400">User management and compliance governance</p>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> RBAC enforcement</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Role assignment</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Audit trails</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> IPHS compliance</li>
+          </ul>
+          <div class="pt-4 text-xs text-slate-500 border-t border-slate-800">
+            <strong>Authority:</strong> System governance only
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KEY BENEFITS ================= -->
+  <section id="benefits" class="bg-slate-900 px-4 sm:px-6 py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-bold">Why Sanjeevani?</h2>
+        <p class="text-slate-400">Built specifically for rural India's healthcare challenges</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-4">
+          <div class="flex gap-4 items-start">
+            <div class="h-10 w-10 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 text-lg">
+              <i class="fa-solid fa-heartbeat"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-white">Maternal Health Focus</h3>
+              <p class="text-sm text-slate-400">Specialized pre-eclampsia and eclamptic crisis detection with automated emergency protocols</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start">
+            <div class="h-10 w-10 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center flex-shrink-0 text-lg">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-white">Deterministic Clinical Algorithms</h3>
+              <p class="text-sm text-slate-400">IPHS 2022 compliant triage decisions, no AI guesswork—deterministic protocols only</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start">
+            <div class="h-10 w-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 text-lg">
+              <i class="fa-solid fa-tower-broadcast"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-white">Zero Cloud Dependency</h3>
+              <p class="text-sm text-slate-400">Works completely offline with local-first architecture—perfect for remote areas</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex gap-4 items-start">
+            <div class="h-10 w-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 text-lg">
+              <i class="fa-solid fa-shield-check"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-white">Strict Role-Based Access Control</h3>
+              <p class="text-sm text-slate-400">5-level RBAC ensures only licensed doctors can prescribe, nurses triage, ASHA surveys</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start">
+            <div class="h-10 w-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0 text-lg">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-white">ABDM Compliance</h3>
+              <p class="text-sm text-slate-400">FHIR R4 JSON exports for Ayushman Bharat integration and district health audits</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start">
+            <div class="h-10 w-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center flex-shrink-0 text-lg">
+              <i class="fa-solid fa-truck-medical"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-white">Emergency Integration</h3>
+              <p class="text-sm text-slate-400">Direct 108 ALS ambulance dispatch authority for RED-tier emergencies</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLINICAL WORKFLOW DEMO ================= -->
+  <section id="demo" class="bg-slate-950 px-4 sm:px-6 py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-bold">Platform Demo</h2>
+        <p class="text-slate-400">See the clinical workflow in action</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 space-y-6">
+        <div class="flex items-center justify-center gap-4 flex-wrap">
+          <span class="px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300 text-sm font-mono">Step 1: ASHA Survey</span>
+          <i class="fa-solid fa-arrow-right text-slate-600"></i>
+          <span class="px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-sm font-mono">Step 2: Nurse Triage</span>
+          <i class="fa-solid fa-arrow-right text-slate-600"></i>
+          <span class="px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-sm font-mono">Step 3: Doctor Review</span>
+          <i class="fa-solid fa-arrow-right text-slate-600"></i>
+          <span class="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm font-mono">Step 4: Prescription</span>
+        </div>
+
+        <button onclick="launchFullPlatform()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 rounded-lg shadow-lg transition flex items-center justify-center gap-2 text-lg">
+          <i class="fa-solid fa-stethoscope"></i> Launch Interactive Platform Demo
+        </button>
+      </div>
+
+      <!-- Clinical Case Example -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-l-4 border-pink-500">
+          <h3 class="font-bold text-lg text-white">Case: Radha Devi (28F, 3rd Trimester)</h3>
+          <div class="space-y-3 text-sm">
+            <div>
+              <strong class="text-slate-300">ASHA Assessment:</strong>
+              <p class="text-slate-400 mt-1">Severe headache + vision floaters + facial edema reported during community survey</p>
+            </div>
+            <div>
+              <strong class="text-slate-300">Nurse Vitals:</strong>
+              <p class="text-slate-400 mt-1">BP 158/98 mmHg | SpO2 95% | Pulse 104 bpm</p>
+            </div>
+            <div>
+              <strong class="text-slate-300">Triage Result:</strong>
+              <p class="text-rose-300 mt-1 font-mono text-xs"><i class="fa-solid fa-triangle-exclamation mr-1"></i> RED PRIORITY - Severe Pre-Eclampsia with Impending Eclamptic Crisis</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-l-4 border-blue-500">
+          <h3 class="font-bold text-lg text-white">Doctor Protocol Response</h3>
+          <div class="space-y-3 text-sm">
+            <div>
+              <strong class="text-slate-300">Immediate Actions:</strong>
+              <ul class="text-slate-400 mt-1 space-y-1 ml-4 list-disc">
+                <li>Authorize Labetalol 100mg oral stat</li>
+                <li>Order left-lateral recumbent positioning</li>
+                <li>Dispatch 108 Emergency ALS Ambulance</li>
+              </ul>
+            </div>
+            <div>
+              <strong class="text-slate-300">Digital Signature:</strong>
+              <p class="text-emerald-300 mt-1 font-mono text-xs"><i class="fa-solid fa-check-double mr-1"></i>Dr. Arvind Sharma (MBBS - Reg #MCI-2019-4820)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section id="pricing" class="bg-slate-900 px-4 sm:px-6 py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-bold">Pricing Plans</h2>
+        <p class="text-slate-400">Scalable solutions for rural health systems of all sizes</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Sub-Centre Plan -->
+        <div class="glass-card rounded-2xl p-6 space-y-6">
+          <div>
+            <h3 class="text-xl font-bold text-white">Sub-Centre</h3>
+            <p class="text-slate-400 text-sm mt-2">For primary health centers serving 5-10 villages</p>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-white">₹999</div>
+            <p class="text-slate-400 text-xs mt-1">/month • Up to 3 staff members</p>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> ASHA survey intake</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Nurse triage</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Basic analytics</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Email support</li>
+          </ul>
+          <button class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-lg transition">
+            Get Started
+          </button>
+        </div>
+
+        <!-- PHC Plan (Most Popular) -->
+        <div class="glass-card rounded-2xl p-6 space-y-6 border-2 border-cyan-500 relative">
+          <div class="absolute top-4 right-4 bg-cyan-500/20 text-cyan-300 text-xs font-bold px-3 py-1 rounded-full">
+            MOST POPULAR
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">PHC Standard</h3>
+            <p class="text-slate-400 text-sm mt-2">For public health centers with doctor and nurse staff</p>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-white">₹2,999</div>
+            <p class="text-slate-400 text-xs mt-1">/month • Up to 8 staff members</p>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> All Sub-Centre features</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Doctor tele-prescription</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> 108 ambulance integration</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Priority support</li>
+          </ul>
+          <button class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-2 rounded-lg transition">
+            Start 30-Day Free Trial
+          </button>
+        </div>
+
+        <!-- District Plan -->
+        <div class="glass-card rounded-2xl p-6 space-y-6">
+          <div>
+            <h3 class="text-xl font-bold text-white">District Enterprise</h3>
+            <p class="text-slate-400 text-sm mt-2">For district health administration and CMO oversight</p>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-white">Custom</div>
+            <p class="text-slate-400 text-xs mt-1">/month • Unlimited staff & facilities</p>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> All PHC features</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> CMO analytics dashboard</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> ABDM/FHIR export</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Dedicated support team</li>
+          </ul>
+          <button class="w-full border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 font-bold py-2 rounded-lg transition">
+            Contact Sales
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA SECTION ================= -->
+  <section class="bg-gradient-to-r from-cyan-950/30 to-blue-950/30 px-4 sm:px-6 py-16 sm:py-24 border-t border-slate-800">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-bold">Ready to Transform Rural Healthcare?</h2>
+      <p class="text-slate-400 text-lg">
+        Join 10,000+ villages already using Sanjeevani to save maternal lives and improve rural health outcomes.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+        <button onclick="launchFullPlatform()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-8 py-3 rounded-lg shadow-lg transition">
+          Launch Demo Platform
+        </button>
+        <button class="border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 font-bold px-8 py-3 rounded-lg transition">
+          Schedule Demo Call
+        </button>
+      </div>
+      <p class="text-sm text-slate-500">No credit card required • 30-day free trial • IPHS 2022 certified</p>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900 border-t border-slate-800 px-4 sm:px-6 py-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+        <div>
+          <h4 class="font-bold text-white mb-4">Product</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#features" class="hover:text-cyan-400">Features</a></li>
+            <li><a href="#pricing" class="hover:text-cyan-400">Pricing</a></li>
+            <li><a href="#" class="hover:text-cyan-400">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4">Healthcare</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-cyan-400">Maternal Health</a></li>
+            <li><a href="#" class="hover:text-cyan-400">Rural Reach</a></li>
+            <li><a href="#" class="hover:text-cyan-400">Telemedicine</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4">Company</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-cyan-400">About</a></li>
+            <li><a href="#" class="hover:text-cyan-400">Blog</a></li>
+            <li><a href="#" class="hover:text-cyan-400">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4">Legal</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-cyan-400">Privacy</a></li>
+            <li><a href="#" class="hover:text-cyan-400">Terms</a></li>
+            <li><a href="#" class="hover:text-cyan-400">Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center pt-8 gap-4">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-shield-heart text-cyan-400 text-xl"></i>
+          <span class="font-bold text-white">Sanjeevani Care Cloud</span>
+        </div>
+        <p class="text-xs text-slate-500 text-center">
+          © 2024 Team ByteMe. IPHS 2022 Compliant | Ayushman Bharat Integrated | Built for Rural India
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function launchFullPlatform() {
+      // Redirect to the full platform
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
